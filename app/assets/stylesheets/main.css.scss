@@ -1,0 +1,9 @@
+.flash-message {
+  padding: 0.5em;
+  &.notice {
+    background-color: #0f0;
+  }
+  &.alert {
+    background-color: yellow;
+  }
+}

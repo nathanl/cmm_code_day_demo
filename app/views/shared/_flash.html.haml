@@ -1,0 +1,6 @@
+- if flash.count > 0
+  #flash
+    - flash.each do |type, message|
+      - if %w[alert error notice].include?(type)
+        .flash-message{ class: "#{type}"}
+          = message

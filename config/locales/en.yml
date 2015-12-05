@@ -20,4 +20,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  sign_in: "Sign In"
+  signed_in_welcome: "Welcome, %{email}!"
+  sign_out: "Sign Out"
