@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207141756) do
+ActiveRecord::Schema.define(version: 20151207144327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,9 @@ ActiveRecord::Schema.define(version: 20151207141756) do
     t.string  "line_1",     null: false
     t.string  "line_2"
     t.string  "line_3"
-    t.string  "city",       null: false
-    t.string  "state",      null: false
-    t.string  "zip",        null: false
+    t.string  "city"
+    t.string  "state"
+    t.string  "zip"
   end
 
   add_index "company_addresses", ["company_id"], name: "index_company_addresses_on_company_id", using: :btree
@@ -47,11 +47,35 @@ ActiveRecord::Schema.define(version: 20151207141756) do
 
   add_index "company_phone_numbers", ["company_id"], name: "index_company_phone_numbers_on_company_id", using: :btree
 
+  create_table "projects", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.string  "name",       null: false
+  end
+
+  add_index "projects", ["company_id"], name: "index_projects_on_company_id", using: :btree
+
   create_table "roles", force: :cascade do |t|
     t.string "name", null: false
   end
 
   add_index "roles", ["name"], name: "index_roles_on_name", unique: true, using: :btree
+
+  create_table "sessions", force: :cascade do |t|
+    t.integer  "task_id",                         null: false
+    t.date     "date",                            null: false
+    t.string   "description"
+    t.integer  "duration_in_minutes", default: 0, null: false
+    t.datetime "active_timer_start"
+  end
+
+  add_index "sessions", ["task_id"], name: "index_sessions_on_task_id", using: :btree
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer "project_id", null: false
+    t.string  "name",       null: false
+  end
+
+  add_index "tasks", ["project_id"], name: "index_tasks_on_project_id", using: :btree
 
   create_table "user_roles", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -70,4 +94,7 @@ ActiveRecord::Schema.define(version: 20151207141756) do
   add_foreign_key "company_addresses", "companies"
   add_foreign_key "company_email_addresses", "companies"
   add_foreign_key "company_phone_numbers", "companies"
+  add_foreign_key "projects", "companies"
+  add_foreign_key "sessions", "tasks"
+  add_foreign_key "tasks", "projects"
 end

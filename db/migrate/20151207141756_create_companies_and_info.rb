@@ -10,9 +10,9 @@ class CreateCompaniesAndInfo < ActiveRecord::Migration
       t.string :line_1, null: false
       t.string :line_2
       t.string :line_3
-      t.string :city, null: false
-      t.string :state, null: false
-      t.string :zip, null: false
+      t.string :city
+      t.string :state
+      t.string :zip
     end
 
     add_foreign_key :company_addresses, :companies
