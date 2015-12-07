@@ -7,7 +7,7 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = render "shared/sign_in_and_out"
+    = render "shared/sign_out" unless params[:controller] == "sessions"
     = render "shared/flash"
 
     %main

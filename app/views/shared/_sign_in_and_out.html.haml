@@ -1,5 +1,0 @@
-.sign-in-or-out
-  - if user_signed_in?
-    = link_to t("sign_out"), sign_out_path
-  - elsif params[:controller] != "sessions"
-    = link_to t("sign_in"), sign_in_path
