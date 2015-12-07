@@ -11,10 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151207141358) do
+ActiveRecord::Schema.define(version: 20151207141756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "companies", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
+  create_table "company_addresses", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.string  "line_1",     null: false
+    t.string  "line_2"
+    t.string  "line_3"
+    t.string  "city",       null: false
+    t.string  "state",      null: false
+    t.string  "zip",        null: false
+  end
+
+  add_index "company_addresses", ["company_id"], name: "index_company_addresses_on_company_id", using: :btree
+
+  create_table "company_email_addresses", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.string  "address",    null: false
+  end
+
+  add_index "company_email_addresses", ["company_id"], name: "index_company_email_addresses_on_company_id", using: :btree
+
+  create_table "company_phone_numbers", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.string  "number",     null: false
+    t.string  "type",       null: false
+  end
+
+  add_index "company_phone_numbers", ["company_id"], name: "index_company_phone_numbers_on_company_id", using: :btree
 
   create_table "roles", force: :cascade do |t|
     t.string "name", null: false
@@ -36,4 +67,7 @@ ActiveRecord::Schema.define(version: 20151207141358) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "company_addresses", "companies"
+  add_foreign_key "company_email_addresses", "companies"
+  add_foreign_key "company_phone_numbers", "companies"
 end
