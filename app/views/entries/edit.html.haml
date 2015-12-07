@@ -1,8 +1,13 @@
-%h1 New Entry
+%script
 
-= render partial: "form", locals: {submit_button_text: "Create Entry"}
+%h1 Edit Entry
 
-= form_for [:company, :project, :task, @entry] do |f|
+-# = form_for [:company, :project, :task, @entry] do |f|
+-# = form_for @entry do |f|
+
+-# WAT - Y U NO figure this out from @entry?
+= form_for [@entry.task.project.company, @entry.task.project, @entry.task, @entry] do |f|
+
   %fieldset
     = f.label :date
     = f.date_select :date
@@ -24,4 +29,4 @@
     = f.label :active_timer_start
     = f.datetime_select :active_timer_start
 
-  = f.submit "Create Entry"
+  = f.submit "Update Entry"

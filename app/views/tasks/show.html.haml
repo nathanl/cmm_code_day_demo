@@ -1,8 +1,12 @@
 %h1 Task: #{@task.name}
 
+Total Time: #{@task.duration_in_minutes}
+
 %ul
 - @entries.each do |entry|
   %li
     = link_to entry.description, company_project_task_entry_path(task_id: @task.id, id: entry.id)
+    %span.duration
+      = human_duration(entry.duration_in_minutes)
 
 = link_to "New Entry", new_company_project_task_entry_path(task_id: @task.id) 

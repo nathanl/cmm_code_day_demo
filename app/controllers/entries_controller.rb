@@ -13,6 +13,7 @@ class EntriesController < ApplicationController
     if @entry.save
       redirect_to company_project_task_entry_path(id: @entry)
     else
+      flash[:error] = @entry.errors.full_messages.to_sentence
       render "edit"
     end
   end
@@ -24,6 +25,21 @@ class EntriesController < ApplicationController
 
   def show
     @entry = Entry.find(params[:id])
+  end
+
+  def edit
+    @entry = Entry.find(params[:id])
+  end
+
+  def update
+    @entry = Entry.find(params[:id])
+    @entry.attributes = entry_params
+    if @entry.save
+      redirect_to company_project_task_entry_path(id: @entry)
+    else
+      flash[:error] = @entry.errors.full_messages.to_sentence
+      render :edit
+    end
   end
 
   def start_timer
