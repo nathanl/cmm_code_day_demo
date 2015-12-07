@@ -28,11 +28,11 @@ class EntriesController < ApplicationController
   end
 
   def edit
-    @entry = Entry.find(params[:id])
+    @entry = find_entry_for_current_user
   end
 
   def update
-    @entry = Entry.find(params[:id])
+    @entry = find_entry_for_current_user
     @entry.attributes = entry_params
     if @entry.save
       redirect_to company_project_task_entry_path(id: @entry)
@@ -43,14 +43,14 @@ class EntriesController < ApplicationController
   end
 
   def start_timer
-    @entry = Entry.find(params[:id])
+    @entry = find_entry_for_current_user
     @entry.start_timer
     @entry.save
     redirect_to company_project_task_entry_path(id: @entry)
   end
 
   def stop_timer
-    @entry = Entry.find(params[:id])
+    @entry = find_entry_for_current_user
     @entry.stop_timer
     @entry.save
     redirect_to company_project_task_entry_path(id: @entry)
@@ -62,6 +62,10 @@ class EntriesController < ApplicationController
     params.require(:entry).permit(
       :date, :description, :duration_in_minutes, :active_timer_start
     )
+  end
+
+  def find_entry_for_current_user
+    current_user.entries.find(params[:id])
   end
 
 end
