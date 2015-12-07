@@ -26,6 +26,20 @@ class EntriesController < ApplicationController
     @entry = Entry.find(params[:id])
   end
 
+  def start_timer
+    @entry = Entry.find(params[:id])
+    @entry.start_timer
+    @entry.save
+    redirect_to company_project_task_entry_path(id: @entry)
+  end
+
+  def stop_timer
+    @entry = Entry.find(params[:id])
+    @entry.stop_timer
+    @entry.save
+    redirect_to company_project_task_entry_path(id: @entry)
+  end
+
   private
 
   def entry_params

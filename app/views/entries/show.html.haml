@@ -1,3 +1,22 @@
 %h1 Entry
 
-= debug(@entry.inspect)
+%dl
+  %dt Date
+  %dd= @entry.date
+
+  %dt Description
+  %dd= @entry.description
+
+  %dt Duration In Minutes
+  %dd= @entry.duration_in_minutes
+
+  %dt Active Timer Start
+  %dd= @entry.active_timer_start || "(Timer not running)"
+
+  %dt User
+  %dd= @entry.user.email
+
+- if @entry.timer_running?
+  = button_to "Stop Timer", {action: :stop_timer}, method: :patch
+- else
+  = button_to "Start Timer", {action: :start_timer}, method: :patch

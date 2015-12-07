@@ -16,6 +16,13 @@ describe Entry do
 
   end
 
+  it "knows if a timer is running" do
+    entry = Entry.new
+    expect(entry.timer_running?).to eq(false)
+    entry.start_timer
+    expect(entry.timer_running?).to eq(true)
+  end
+
   describe "stopping the timer" do
 
     it "explodes if there's no active timer" do

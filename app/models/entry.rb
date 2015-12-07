@@ -15,6 +15,10 @@ class Entry < ActiveRecord::Base
     self.active_timer_start = nil
   end
 
+  def timer_running?
+    active_timer_start.present?
+  end
+
   private
 
   def duration_not_negative
