@@ -6,6 +6,7 @@
 - when stopping timer, flash message: "timer ran from x to y, added z minutes to duration"
 - HTML / CSV reports
 - user docs
+- Clean up route / page traversal; inconsistent about index/show
 - Prettification :)
 
 ## Explain
