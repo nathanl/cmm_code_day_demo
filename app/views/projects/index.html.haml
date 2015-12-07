@@ -1,7 +1,12 @@
-%h1 Projects
+= render partial: "companies/breadcrumbs", locals: {company: @company}
+
+%h1 #{@company.name} Projects
 
 %ul
   - @projects.each do |project|
-    %li= link_to project.name, company_project_tasks_path(company: @company, project_id: project.id)
+    %li
+      = link_to project.name, company_project_tasks_path(project_id: project.id)
+      = human_duration(project.duration_in_minutes)
+
 
 = link_to "New Project", new_company_project_path(@company)

@@ -1,9 +1,12 @@
-= render partial: "projects/breadcrumbs", locals: {project: @project}
+-# = render partial: "projects/breadcrumbs", locals: {project: @project}
+-# = render partial: "projects/breadcrumbs", locals: {project: @project}
 
-%h1 Tasks
+%h1 #{@project.name} Tasks
 
 %ul
   - @tasks.each do |task|
-    %li= link_to task.name, company_project_task_path(id: task.id)
+    %li
+      = link_to task.name, company_project_task_path(id: task.id)
+      = human_duration(task.duration_in_minutes)
 
 = link_to "New Task", new_company_project_task_path(project_id: @project.id)

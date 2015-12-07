@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def human_duration(minutes)
-    "#{minutes} (#{(minutes / 60.0).round(2)} hours)"
+    "#{minutes} min (#{(minutes / 60.0).round(2)} hrs)"
   end
 
   def human_boolean(bool)

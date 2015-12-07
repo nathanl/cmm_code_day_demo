@@ -8,4 +8,8 @@ class Company < ActiveRecord::Base
 
   validates :name, presence: true
 
+  def duration_in_minutes
+    projects.map(&:duration_in_minutes).reduce(0, &:+)
+  end
+
 end
