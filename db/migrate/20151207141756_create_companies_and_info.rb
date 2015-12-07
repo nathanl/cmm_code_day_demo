@@ -23,7 +23,7 @@ class CreateCompaniesAndInfo < ActiveRecord::Migration
     create_table :company_phone_numbers do |t|
       t.integer :company_id, null: false
       t.string :number, null: false
-      t.string :type, null: false
+      t.string :number_type, null: false
     end
 
     add_foreign_key :company_phone_numbers, :companies

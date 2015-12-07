@@ -42,9 +42,9 @@ ActiveRecord::Schema.define(version: 20151207144327) do
   add_index "company_email_addresses", ["company_id"], name: "index_company_email_addresses_on_company_id", using: :btree
 
   create_table "company_phone_numbers", force: :cascade do |t|
-    t.integer "company_id", null: false
-    t.string  "number",     null: false
-    t.string  "type",       null: false
+    t.integer "company_id",  null: false
+    t.string  "number",      null: false
+    t.string  "number_type", null: false
   end
 
   add_index "company_phone_numbers", ["company_id"], name: "index_company_phone_numbers_on_company_id", using: :btree

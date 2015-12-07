@@ -1,5 +1,6 @@
 class CompanyPhoneNumber < ActiveRecord::Base
-  validates :company, :number, :type, presence: true
+  belongs_to :company
+  validates :company, :number, :number_type, presence: true
 
-  # TODO: validate type is either "phone" or "fax"
+  # TODO: validate number_type is either "phone" or "fax"
 end

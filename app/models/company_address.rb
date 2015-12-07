@@ -1,3 +1,4 @@
 class CompanyAddress < ActiveRecord::Base
-  validates :company, :line_1, :city, :state, :zip, null: false
+  belongs_to :company
+  validates :company, :line_1, presence: true
 end
