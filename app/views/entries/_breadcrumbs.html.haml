@@ -1,0 +1,8 @@
+%span.breadcrumb.company
+  = link_to entry.task.project.company.name, company_projects_path(company_id: entry.task.project.company.id)
+  >
+%span.breadcrumb.project
+  = link_to entry.task.project.name, company_project_tasks_path(project_id: entry.task.project.id)
+  >
+%span.breadcrumb.task
+  = link_to entry.task.name, company_project_task_path(id: entry.task.id)

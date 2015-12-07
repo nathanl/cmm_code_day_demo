@@ -1,3 +1,5 @@
+= render partial: "breadcrumbs", locals: {entry: @entry}
+
 %h1 Entry
 
 = link_to "Edit Entry", edit_company_project_task_entry_path(id: @entry)

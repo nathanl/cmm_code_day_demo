@@ -1,6 +1,6 @@
-%h1 New Entry
+= render partial: "breadcrumbs", locals: {entry: @entry}
 
-= render partial: "form", locals: {submit_button_text: "Create Entry"}
+%h1 New Entry
 
 = form_for [:company, :project, :task, @entry] do |f|
   %fieldset

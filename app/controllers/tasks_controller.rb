@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @project = Project.find(params[:project_id])
     @task = @project.tasks.build(task_params)
     if @task.save
-      redirect_to company_project_tasks_path(@project)
+      redirect_to company_project_tasks_path(project_id: @project.id)
     else
       flash[:error] = @task.errors.full_messages.to_sentence
       render "edit"
