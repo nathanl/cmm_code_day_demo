@@ -1,0 +1,8 @@
+%h1 New Project
+
+= form_for [:company, @project] do |f|
+  %fieldset
+    = f.label :name
+    = f.text_field :name
+
+  = f.submit "Submit"

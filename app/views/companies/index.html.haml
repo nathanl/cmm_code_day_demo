@@ -1,0 +1,5 @@
+%h1 Companies
+
+%ul
+  - @companies.each do |company|
+    %li= link_to company.name, company_projects_path(company)

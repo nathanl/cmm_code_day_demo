@@ -1,0 +1,8 @@
+%h1 Task: #{@task.name}
+
+%ul
+- @entries.each do |entry|
+  %li
+    link_to entry.description, company_project_task_entry_path(entry)
+
+= link_to "New Entry", new_company_project_task_entry_path(task_id: @task.id) 

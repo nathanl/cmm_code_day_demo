@@ -1,0 +1,7 @@
+%h1 Projects
+
+%ul
+  - @projects.each do |project|
+    %li= link_to project.name, company_project_tasks_path(company: @company, project_id: project.id)
+
+= link_to "New Project", new_company_project_path(@company)
