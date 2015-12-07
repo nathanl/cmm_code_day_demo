@@ -1,0 +1,10 @@
+= form_for @sticker do |f|
+  %fieldset
+    = f.label :color
+    = f.text_field :color
+
+  %fieldset
+    = f.label :text
+    = f.text_field :text
+
+  = f.submit submit_button_text
