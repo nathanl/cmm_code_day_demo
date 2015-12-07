@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
       flash[:notice] = t("signed_in_welcome", email: user.email)
       redirect_to root_path
     else
+      flash[:error] = t("invalid_login")
       redirect_to "/sign_in"
     end
   end

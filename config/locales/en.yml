@@ -23,3 +23,4 @@ en:
   sign_in: "Sign In"
   signed_in_welcome: "Welcome, %{email}!"
   sign_out: "Sign Out"
+  invalid_login: "Invalid login"
