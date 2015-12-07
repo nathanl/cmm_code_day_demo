@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 20151207144327) do
     t.string "name", null: false
   end
 
+  add_index "companies", ["name"], name: "index_companies_on_name", unique: true, using: :btree
+
   create_table "company_addresses", force: :cascade do |t|
     t.integer "company_id", null: false
     t.string  "line_1",     null: false

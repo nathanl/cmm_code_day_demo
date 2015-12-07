@@ -5,6 +5,8 @@ class CreateCompaniesAndInfo < ActiveRecord::Migration
       t.string :name, null: false
     end
 
+    add_index :companies, :name, unique: true
+
     create_table :company_addresses do |t|
       t.integer :company_id, null: false
       t.string :line_1, null: false
